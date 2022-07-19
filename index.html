@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/eecb5127e2.js" crossorigin="anonymous"></script>
+    <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        * {
+			box-sizing: border-box;
+			font-family: "微軟正黑體",'Roboto', sans-serif;
+		}
+        body {
+            overflow-x: hidden;
+            margin: 0;
+			padding: 0;
+            margin-top:-32px;
+        }
+		img {
+			max-width: 100%;
+			height: auto;
+			/* vertical-align: middle; */
+		}
+        .font-white {
+            color: #fff;
+        }
+        .font-black {
+            color: #000;
+        }
+        .largetxt {
+			/* font-weight: 600; */
+		  	font-size: 3.375rem;
+			margin-bottom: 1rem;
+		}
+        .mediumtxt {
+			/* font-weight: 600; */
+		  	font-size: 2.625rem;
+			margin-bottom: 1rem;
+		}
+        .smalltxt {
+			/* font-weight: 600; */
+		  	font-size: 1.875rem;
+			margin-bottom: 1rem;
+		}
+        .subtitleL {
+		  	font-size: 30px;
+            margin-bottom: 0.5rem;
+        }
+        .subtitleM {
+		  	font-size: 24px;
+            margin-bottom: 0.5rem;
+        }
+        .subtitleS {
+		  	font-size: 18px;
+            margin-bottom: 0.5rem;
+        }
+        .subtitleSS {
+		  	font-size: 16px;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+        .detailtxt {
+            color:#444;
+            font-size: 14px;
+            margin:0;
+        }
+        .hrline {
+            height: 1px;
+            border-width: 0;
+            background-color: #444;
+            width: 50%;
+            margin: 50px 0 30px;
+        }
+        @media print, screen and (max-width:600px) {
+            .largetxt {
+                /* font-weight: 600; */
+                font-size: 2.25rem;
+                margin-bottom: 0.75rem;
+            }
+            .mediumtxt {
+                /* font-weight: 600; */
+                font-size: 1.75rem;
+                margin-bottom: 0.5rem;
+            }
+            .smalltxt {
+                /* font-weight: 600; */
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+            .subtitleL {
+                font-size: 22px;
+                margin-bottom: 0.25rem;
+            }
+            .subtitleM {
+                font-size: 18px;
+                margin-bottom: 0.25rem;
+            }
+            .subtitleS {
+                font-size: 16px;
+                margin-bottom: 0.25rem;
+            }
+            .subtitleSS {
+                font-size: 14px;
+                margin-bottom: 0.5rem;
+                letter-spacing: 2px;
+            }
+            .detailtxt {
+                color:#444;
+                font-size: 14px;
+                margin:0;
+            }
+        }
+
+        /* layout */
+        .all_flex {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .all_itemL {
+            width: 1200px;
+            height: auto;
+        }
+        .all_itemM {
+            width: 900px;
+            height: auto;
+        }
+        .flex_wrap {
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-around;
+		}
+        @media print, screen and (max-width:1200px) {
+            .all_itemL {
+                width: 800px;
+                height: auto;
+            }
+            .all_itemM {
+                width: 800px;
+                height: auto;
+            }
+        }
+        @media print, screen and (max-width:900px) {
+            .all_itemL {
+                width: 700px;
+                height: auto;
+            }
+            .all_itemM {
+                width: 750px;
+                height: auto;
+            }
+        }
+        @media print, screen and (max-width:700px) {
+            .all_itemL {
+                width: 100%;
+                height: auto;
+                padding:16px;
+            }
+            .all_itemM {
+                width: 100%;
+                height: auto;
+                padding:16px;
+            }
+            .item1 {
+                width: 50%;
+                padding: 32px 0;
+                border: 1px solid #222;
+                background-color: #fff;
+            }
+        }
+        @media print, screen and (max-width:900px) {
+            .row-reverse .toolimg {
+                order: -1;
+            }
+            .item1 {
+                width: 100%;
+                padding: 32px 0;
+                border: 1px solid #222;
+                background-color: #fff;
+            }
+        }
+
+        /* section1 */
+        .aa {
+            box-shadow: 0 0 6px rgb(0, 0, 0, .3);
+            width: 30%;
+            margin: 16px;
+            background-color: #fff;
+        }
+        .aa:hover {
+            box-shadow: 0 0 6px rgb(0, 0, 0, .5);
+            width: 30%;
+            margin: 16px;
+        }
+        .bb {
+            background-color: #ccc;
+            background-repeat: no-repeat;
+            background-position: center right;
+            background-size: cover;
+            padding: 0 16px;
+            width: 100%;
+        }
+        .aa:hover .bb {
+            background-color: #ccc;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            padding: 0 16px;
+            width: 100%;
+            cursor: pointer;
+            transition: all .3s;
+        }
+        .bb-1 {
+            background-image: url(img/online-scanner.jpg);
+        }
+        .bb-2 {
+            background-image: url(img/router-checker.jpg);
+        }
+        .bb-3 {
+            background-image: url(img/data-discovery-helper.jpg);
+        }
+        .bb-4 {
+            background-image: url(img/identity-theft-checker.jpg);
+        }
+        .bb-5 {
+            background-image: url(img/digital-life-test.jpg);
+        }
+        .bb-6 {
+            background-image: url(img/ip-checker.jpg);
+        }
+        .cc {
+            width:100%;
+            height: 110px;
+            padding: 0 16px;
+        }
+        .dd  {
+            width:100%;
+            padding: 16px;
+        }
+        .btnlink {
+            border: 1px solid #005ac8;
+            background-color: initial;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btnlink a {
+            color: #005ac8;
+            text-decoration: none;
+        }
+        .btnlink:hover {
+            border: 1px solid #005ac8;
+            background-color: #005ac8;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btnlink:hover a {
+            color: #fff;
+        }
+        @media print, screen and (max-width:1024px) {
+            .aa {
+                box-shadow: 0 0 6px rgb(0, 0, 0, .3);
+                width: 45%;
+                margin: 16px;
+            }
+            .aa:hover {
+                box-shadow: 0 0 6px rgb(0, 0, 0, .5);
+                width: 45%;
+                margin: 16px;
+            }
+        }
+        @media print, screen and (max-width:700px) {
+            .aa {
+                box-shadow: 0 0 6px rgb(0, 0, 0, .3);
+                width: 40%;
+                margin: 16px;
+            }
+            .aa:hover {
+                box-shadow: 0 0 6px rgb(0, 0, 0, .5);
+                width: 40%;
+                margin: 16px;
+            }
+            .cc {
+                width:100%;
+                height: 150px;
+                padding: 0 16px;
+            }
+            .cc ul {
+                padding: 8px;
+            }
+        }
+        @media print, screen and (max-width:500px) {
+            .aa {
+                box-shadow: 0 0 6px rgb(0, 0, 0, .3);
+                width: 100%;
+                margin: 16px;
+            }
+            .aa:hover {
+                box-shadow: 0 0 6px rgb(0, 0, 0, .5);
+                width: 100%;
+                margin: 16px;
+            }
+            .cc {
+                width:100%;
+                height: auto;
+                padding: 0 16px;
+            }
+        }
+
+        /* section2 */
+        .checklink {
+            display: inline-block;
+            background-color: green;
+            color:#fff;
+            padding: 8px 16px;
+            margin-top: 16px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .checklink:hover, .checklink:focus {
+            background-color: rgb(12, 145, 12);
+            color:#fff;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .bg_txt {
+            border-left: 10px solid green;
+            background-color: #d1eeda;
+            padding: 16px 0;
+        }
+        .DNS_txt {
+            padding: 0 16px;
+        }
+        .toolimg {
+            width:250px;
+            height:auto;
+        }
+        .tooltxt {
+            width:500px;
+        }
+        @media print, screen and (max-width:1200px) {
+            .toolimg {
+                width:180px;
+                height:auto;
+            }
+            .tooltxt {
+                width:400px;
+            }
+
+        }
+        @media print, screen and (max-width:900px) {
+            .tooltxt {
+                width:100%;
+            }
+        }
+        @media print, screen and (max-width:500px) {
+            .DNS_txt {
+                padding: 0 16px;
+                margin-bottom: 30px;
+            }
+        }
+
+        /* section3 */
+        /* 科技巨頭 */
+        .icon_link {
+            margin: 0 16px;
+        }
+        .icon_link p {
+            margin: 0;
+        }
+        .iconbtn {
+            padding: 32px 48px;
+            background-color: #fff;
+            border: 0;
+            box-shadow: 0 0 6px rgb(0, 0, 0, .3);
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        .iconbtn:hover {
+            padding: 32px 48px;
+            background-color: #fff;
+            border: 0;
+            box-shadow: 0 0 6px rgb(0, 0, 0, .5);
+            cursor: pointer;
+        }
+        .iconstyle {
+            display: block;
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+        }
+        .showblock{
+            display:block!important;
+        }
+        .link_a-1 {
+            display: block;
+            text-decoration: none !important;
+            color: #222;
+            background-color: #fff;
+        }
+        @media print, screen and (max-width:700px) {
+            .icon_link {
+                margin: 16px 0;
+            }
+        }
+        /* 保護數據的 3 個技巧 */
+        .bg_gray {
+            background-color: #f2f2f2;
+            width: 100%;
+            padding: 32px 0;
+        }
+        ul.flex_wrap {
+            padding: 0;
+        }
+        ul.flex_wrap li {
+            width:30%;
+            margin: 0 8px;
+        }
+        ul.flex_wrap li img {
+            width: 50px;
+            margin-right: 16px;
+        }
+        @media print, screen and (max-width:700px) {
+            ul.flex_wrap {
+                padding: 0;
+            }
+            ul.flex_wrap li {
+                width:100% !important;
+                margin: 16px 8px !important;
+            }
+        }
+
+        /* section4 */
+        .hidecontent {
+            display:none;
+        }
+        .showcontent {
+            display: block;
+        }
+        .toolcard {
+            background-color: initial;
+            color: #005ac8;
+            font-size: 24px;
+            font-weight: bold;
+            border: 0;
+            padding: 16px 32px;
+            margin: 0 auto;
+            width: 100%;
+            cursor: pointer;
+        }
+        ul.flex_wrap li {
+            width:30%;
+            margin: 0 8px;
+        }
+        ul.flex_wrap li img {
+            width: 50px;
+            margin-right: 16px;
+        }
+
+         /* section5 */
+         .toolimgL {
+            width:350px;
+            height:auto;
+        }
+        .checkicon {
+            background-color: #005ac8;
+            border-radius: 50px;
+            color: #fff;
+            padding: 4px;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+        @media print, screen and (max-width:1200px) {
+            .toolimgL {
+                width:300px;
+                height:auto;
+            }
+        }
+        @media print, screen and (max-width:900px) {
+            .toolimgL {
+                width:90%;
+                height:auto;
+                margin-top: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="all_flex">
+        <div class="all_itemL" align="center">
+            <h1 class="mediumtxt">芬-安全 F-Secure的免費線上小工具</h1>
+            <p class="subtitleM">芬-安全 F-Secure旨在確保使用者和企業的線上安全，為了進一步瞭解與安全性的相關主題，以下為芬-安全 F-Secure線上免費小工具</p>
+        </div>
+        <div class="all_itemL">
+            <div class="flex_wrap">
+                <div class="all_flex aa">
+                    <div class="bb bb-1 subtitleS">
+                        <a href="https://www.fservice.com.tw/online_scanner.html" style="color: #005ac8;text-decoration: none;">
+                            <h3>芬-安全 F-Secure<br>
+                                線上掃描</h3>
+                        </a>
+                      </div>
+                
+                    <div class="cc">
+                      <ul>
+                          <li>免費掃描您的電腦中是否有有害威脅</li>
+                          <li>清理病毒和惡意軟體</li>
+                          <li>立即檢測最新威脅</li>
+                      </ul>
+                    </div> 
+                    <div class="dd flex_wrap">
+                        <button class="btnlink">
+                            <a href="https://www.fservice.com.tw/online_scanner.html">查看更多</a>
+                        </button>
+                    </div>
+                </div>
+                <div class="all_flex aa">
+                    <div class="bb bb-2 subtitleS">
+                      <a href="https://www.fservice.com.tw/router-checker" style="color: #005ac8;text-decoration: none;">
+                        <h3>芬-安全 F-Secure<br>
+                            路由器檢查器</h3>
+                      </div>
+                      </a>
+                    <div class="cc">
+                      <ul>
+                          <li>免費檢查路由器</li>
+                          <li>檢查您的網路連接是否安全</li>
+                          <li>即時檢查以查看您的路由器是否被不法分子劫持</li>
+                      </ul>
+                    </div> 
+                    <div class="dd flex_wrap">
+                        <button class="btnlink">
+                            <a href="https://www.fservice.com.tw/router-checker">查看更多</a>
+                        </button>
+                    </div>
+                </div>
+                <div class="all_flex aa">
+                    <div class="bb bb-3 subtitleS">
+                    <a href="https://www.fservice.com.tw/data-discovery-helper" style="color: #005ac8;text-decoration: none;">
+                      <h3>芬-安全 F-Secure<br>
+                        搜尋資料小幫手</h3>
+                      </div>
+                    </a>
+                    <div class="cc">
+                      <ul>
+                          <li>找出社群軟體網站對您的瞭解程度</li>
+                          <li>只需一鍵點擊入口網站就可搜尋您的資料</li>
+                          <li>獲取提示以保護您的資訊</li>
+                      </ul>
+                    </div> 
+                    <div class="dd flex_wrap">
+                        <button class="btnlink">
+                            <a href="https://www.fservice.com.tw/data-discovery-helper">查看更多</a>
+                        </button>
+                    </div>
+                </div>
+                <div class="all_flex aa">
+                    <div class="bb bb-4 subtitleS">
+                    <a href="https://www.f-secure.com/en/home/free-tools/identity-theft-checker" style="color: #005ac8;text-decoration: none;">
+                      <h3>芬-安全 F-Secure<br>
+                        身份盜用檢查器</h3>
+                      </div>
+                    </a>
+                    <div class="cc">
+                      <ul>
+                          <li>檢查您的個人資訊是否被洩露資訊了</li>
+                          <li>瞭解什麼是資訊洩露和身份盜用</li>
+                          <li>當個人資訊被洩露之後的解決方式</li>
+                      </ul>
+                    </div>
+                    <div class="dd flex_wrap">
+                        <button class="btnlink">
+                            <a href="https://www.f-secure.com/en/home/free-tools/identity-theft-checker">查看更多</a>
+                        </button>
+                    </div>
+                </div>
+                <div class="all_flex aa">
+                    <div class="bb bb-5 subtitleS">
+                        <a href="https://digital-life-test.f-secure.com/en/" style="color: #005ac8;text-decoration: none;">
+                            <h3>芬-安全 F-Secure<br>
+                                數位生活測驗</h3>
+                        </a>
+                      </div>
+                
+                    <div class="cc">
+                      <ul>
+                          <li>加入芬-安全 F-Secure的測試，看看您上網是否安全</li>
+                          <li>找出您的分數並在線上分享</li>
+                          <li>根據結果獲取相對應的解決方式</li>
+                      </ul>
+                    </div> 
+                    <div class="dd flex_wrap">
+                        <button class="btnlink">
+                            <a href="https://digital-life-test.f-secure.com/en/">查看更多</a>
+                        </button>
+                    </div>
+                </div>
+                <div class="all_flex aa">
+                    <div class="bb bb-6 subtitleS">
+                    <a href="https://www.f-secure.com/en/home/free-tools/ip-checker" style="color: #005ac8;text-decoration: none;">
+                      <h3>芬-安全 F-Secure<br>
+                        IP檢查器</h3>
+                      </div>
+                    </a>
+                    <div class="cc">
+                      <ul>
+                          <li>檢查您的IP位址</li>
+                          <li>顯示您的IP位址</li>
+                          <li>瞭解如何使用VPN隱藏IP位址</li>
+                      </ul>
+                    </div> 
+                    <div class="dd flex_wrap">
+                        <button class="btnlink">
+                            <a href="https://www.f-secure.com/en/home/free-tools/ip-checker">查看更多</a>
+                        </button>
+                    </div>
+                </div>        
+            </div>
+        </div>
+    </section>
+
+    <section class="all_flex">
+        <div class="all_itemL" align="center">
+            <h2 class="mediumtxt">芬-安全 F-Secure 路由器檢查器</h2>
+            <p class="subtitleM">芬-安全 F-Secure路由器檢查器是一種即時的免費工具，可查看您的路由器是否遭到劫持。</p>
+            <a href="https://www.f-secure.com/en/home/free-tools/router-checker" target="_blank" class="checklink">檢查您的路由器&nbsp;
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+            <p class="subtitleM">
+                當出現下列畫面，則表示路由器沒有任何問題，同時也可以點擊View results in detail查看更詳細的訊息</p>
+            <p class="bg_txt"><i class="fas fa-check checkicon" style="background-color: green;"></i>&nbsp;Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, quaerat?</p>
+        </div>
+        <div class="all_flex">
+            <div class="all_itemM DNS_txt flex_wrap">
+                <div class="toolimg"><img src="img/FSesuretool01.png" alt=""></div>
+                <div class="tooltxt">
+                    <h3 class="smalltxt">什麼是DNS劫持？為什麼有害？</h3>
+                    <p class="subtitleS">DNS劫持意味著有人未經您的同意而修改了路由器上的設定，這種類型的攻擊使攻擊者可以監控或重設您的網路流量，例如，如果路由器的DNS被劫持，則每次您在連結到該路由器去瀏覽線上網銀時，都可能將您重新定向到該網站的偽造版本。
+                    攻擊者因此可以瀏覽您的銀行業務，並在您不知情的情況下使用它進行非法交易，如果家用的路由器包含漏洞或者設定錯誤，則會遭到駭客入侵。
+                    </p>
+                </div>
+            </div>
+            <div class="all_itemM DNS_txt flex_wrap row-reverse">
+                <div class="tooltxt">
+                    <h3 class="smalltxt">如果路由器的DNS被劫持怎麼辦？</h3>
+                    <p class="subtitleS">DNS劫持會更改您在瀏覽時看到的廣告，如果您在訪問的正常頁面開始看到不適當的廣告，則可能表明您遇到的麻煩。
+                        此外，駭客還可以修改廣告來欺騙您，如果您開始看到警告或通知，表明您的電腦存在問題，很有可能DNS成為劫持的目標了。
+                        </p>
+                </div>
+                <div class="toolimg"><img src="img/FSesuretool02.png" alt=""></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="all_flex">
+        <div class="all_itemL" align="center">
+            <h2 class="mediumtxt">芬-安全 F-Secure 搜尋資料小幫手</h2>
+            <p class="subtitleM">找出您多年來向社群媒體提供的資訊</p>
+            <p class="subtitleM">芬-安全 F-Secure收集了相關連結，以方便您查看多年來向社群媒體提供的資訊，通過點擊下列圖示或連結，您將進入一個頁面，您可以在其中檢查您的私人資訊，此工具僅會將您定向到服務供應商的頁面，而不會追踪你的操作</p>
+        </div>
+        <div class="flex_wrap" style="margin: 50px 0;">
+            <div class="icon_link">
+                <button class="iconbtn"><i class="fab fa-google iconstyle"></i>谷歌</button>
+            </div>
+            <div class="icon_link">
+                <button class="iconbtn"><a href="https://www.facebook.com/help/930396167085762" class="link_a-1" target="_blank"><i class="fab fa-facebook iconstyle"></i>臉書</a></button>
+            </div>
+            <div class="icon_link">
+                <button class="iconbtn"><a href="https://privacy.apple.com/" class="link_a-1" target="_blank"><i class="fab fa-apple iconstyle"></i>蘋果</a></button>
+            </div>
+            <div class="icon_link">
+                <button class="iconbtn"><a href="https://help.twitter.com/en/managing-your-account/how-to-download-your-twitter-archive" class="link_a-1" target="_blank"><i class="fab fa-twitter iconstyle"></i>推特</a></button>
+            </div>
+        </div>
+        <div class="bg_gray">
+            <div class="all_itemM" style="margin:0 auto;">
+                <h2 class="smalltxt" align="center">保護您重要資訊的3個技巧</h2>
+                <ul class="subtitleS flex_wrap" style="list-style-type: none;">
+                    <li class="flex_wrap" style="flex-wrap: nowrap;justify-content:flex-start;">
+                        <img src="img/blue-ball-1-thin.svg" alt="">
+                        為每個帳戶使用單一的高強度密碼
+                    </li>
+                    <li class="flex_wrap" style="flex-wrap: nowrap;justify-content:flex-start;">
+                        <img src="img/blue-ball-2-thin.svg" alt="">
+                        檢查社群媒體的隱私權設定，以避免過度分享
+                    </li>
+                    <li class="flex_wrap" style="flex-wrap: nowrap;justify-content:flex-start;">
+                        <img src="img/blue-ball-3-thin.svg" alt="">
+                        避免向社群軟體服務商提供過多的個人資訊
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="all_flex">
+        <div class="all_itemL" align="center">
+            <h2 class="mediumtxt">檢查您的個人資訊是否已經洩露</h2>
+            <p class="subtitleM">打開下列連結後，輸入您的EMAIL後，系統將會發一封郵件至您的信箱告知資料是否已經洩露了。</p>
+            <p class="subtitleM" style="color:#1476ff;font-weight: bold;">【檢查】</p>
+            <p class="subtitleM">進入頁面後，輸入您常用的EMAIL，即可在該郵件信箱收到相關報告</p>
+            <img src="img/checkmail.png" alt="">
+            <p class="subtitleM">資訊洩露而暴露的帳戶資料可能導致身份盜用<br>
+                芬-安全 F-Secure可以幫助您檢查您的私人資料是否出現在已知的資料洩露中。</p>
+        </div>
+        <div class="all_itemM">
+            <button onclick="toolorder('a01')" class="toolcard">這個工具是如何運作的？
+                <img src="img/arrowimg.svg" alt="" style="transform:rotate(-90deg);">
+            </button>
+            
+            <div id="a01" class="hidecontent">
+                <ul class="subtitleS flex_wrap" style="list-style-type: none;margin-bottom: 32px;" align="center">
+                    <li class="all_flex">
+                        <img src="img/blue-ball-1-thin.svg" alt="">
+                        <h3 class="subtitleS">輸入你的電子郵件地址</h3>
+                        <p class="subtitleSS">使用您用來登入FB或GOOGLE的帳戶</p>
+                        
+                    </li>
+                    <li class="all_flex">
+                        <img src="img/blue-ball-2-thin.svg" alt="">
+                        <h3 class="subtitleS">芬-安全 F-Secure尋找違規行為</h3>
+                        <p class="subtitleSS">我們檢查該電子郵件相關的個人資訊是否已因數據洩露而暴露</p>
+                    </li>
+                    <li class="all_flex">
+                        <img src="img/blue-ball-3-thin.svg" alt="">
+                        <h3 class="subtitleS">收到違規報告</h3>
+                        <p class="subtitleSS">包含建議措施的違規報告將發送至您的電子郵件地址。</p>
+                    </li>
+                </ul>
+                <div class="all_flex">
+                    <p class="detailtxt">F‑Secure 不會存儲您的電子郵件地址或違規信息。</p>
+                    <p class="detailtxt">出於隱私因素，此網站上不會提供有關違規的資訊 芬-安全 F-Secure隱私政策(英文)</p>
+                </div>
+                
+            </div>
+        </div>
+        <hr class="hrline">
+        <div class="all_flex">
+            <h2 class="mediumtxt">FAQ</h2>
+            <div class="all_itemM DNS_txt flex_wrap">
+                <div class="toolimg"><img src="img/man-laptop-notice.svg" alt=""></div>
+                <div class="tooltxt">
+                    <h3 class="smalltxt">什麼是資訊洩露</h3>
+                    <p class="subtitleS">當駭客獲得對包含用戶私人資訊的服務資料庫的瀏覽權時，就會發生資訊洩露，這些資訊的範圍可以從帳戶名稱和密碼再到身分證號碼、地址及付款資訊等，然後再將這些獲得的資料出售給利用這些訊息牟利的犯罪集團。
+                    </p>
+                </div>
+            </div>
+            <div class="all_itemM DNS_txt flex_wrap row-reverse">
+                <div class="tooltxt">
+                    <h3 class="smalltxt">資料洩露如何影嚮我</h3>
+                    <p class="subtitleS">對您來說，最嚴重的後果是當非常敏感的資訊洩漏時，所以要確保永遠不要對多個服務商使用相同的密碼，如果一個服務被洩露了，很有可能其它服務都會一起受到影嚮
+                        </p>
+                </div>
+                <div class="toolimg"><img src="img/woman-desktop-computer-notice.svg" alt=""></div>
+            </div>
+            <div class="all_itemM DNS_txt flex_wrap">
+                <div class="toolimg"><img src="img/hacker.svg" alt=""></div>
+                <div class="tooltxt">
+                    <h3 class="smalltxt">什麼是身份盜用？</h3>
+                    <p class="subtitleS">身份盜竊，特別是線上身份盜竊，這會涉及到某人會冒充您的身份，通常會用來牟利，這些犯罪份子會透過您瀏覽公共資訊或資訊洩露後來獲取這些資訊。所以最好的線上保護方式是使用高強度的密碼來保護私人資訊，並注意在不同服務之間共享的內容。
+                    </p>
+                </div>
+            </div>
+            <div class="all_itemM DNS_txt flex_wrap row-reverse">
+                <div class="tooltxt">
+                    <h3 class="smalltxt">我怎麼知道我的密碼被駭了？</h3>
+                    <p class="subtitleS">高強度的密碼很長，這使得駭客更難猜的到，首先若有8個字元會是一個好開始，但更重要的是每個服務都要使用唯一的密碼，若某項服務的資訊被洩露了，那麼其它使用相同電子郵件登入的服務，就也會有資料洩露的危機。
+                        </p>
+                </div>
+                <div class="toolimg"><img src="img/masked-man.svg" alt=""></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="all_flex">
+        <div class="all_itemL" align="center">
+            <h2 class="mediumtxt">檢查您的IP位址</h2>
+            <p class="subtitleM">您的IP位址是唯一的，用於將您的設備與所有其它連接到網路的設備區分開來。</p>
+            <p class="subtitleM">除了顯示結果外，芬-安全 F-Secure不會將IP位址用於其它用途，亦不會儲存資訊。</p>
+            <p class="subtitleM" style="color:#1476ff;font-weight: bold;">【顯示我的IP位址】</p>
+            <p class="subtitleM">進入頁面後點擊下列按鈕，即可顯示您的IP位址</p>
+            <img src="img/checkip.png" alt="">
+        </div>
+        <div class="all_itemL change">
+            <div class="DNS_txt flex_wrap">
+                <div class="toolimgL">
+                    <img src="img/changeip.png" alt="">
+                </div>
+                <div class="tooltxt">
+                    <p class="subtitleS">使用芬-安全F-Secure FREEDOME VPN，您可以隱藏您真實的IP位址，並將其替換為來自VPN供應商的IP位址。</p>
+                    <p class="subtitleS">芬-安全 F-Secure FREEDOME VPN是用來創建可信VPN連結的一鍵式解決方案，可以使用它來：</p>
+                    <ul style="list-style-type: none;">
+                        <li><i class="fas fa-check checkicon"></i>&nbsp;隱藏您的真實IP位址</li>
+                        <li><i class="fas fa-check checkicon"></i>&nbsp;更改您的虛擬位置</li>
+                        <li><i class="fas fa-check checkicon"></i>&nbsp;阻止線上追踪</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://www.fservice.com.tw/wp-content/themes/twentythirteen/fsecure_tool.js"></script>
+</body>
+</html>
